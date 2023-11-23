@@ -2,7 +2,7 @@
 import Container from "@/components/ui/container";
 import React, { useState } from "react";
 import { LogIn, Phone, Lock, Eye, EyeOff } from "lucide-react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import {

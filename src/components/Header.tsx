@@ -11,6 +11,8 @@ import {
   FolderGit2,
   Swords,
   LayoutDashboard,
+  Home,
+  Github,
 } from "lucide-react";
 import ProfileButton from "./ui/profile-button";
 import {
@@ -30,6 +32,11 @@ export default function Header() {
   const [currentUser, setCurrentUser] = useState(false);
   const routes = [
     {
+      href: "/",
+      label: "Home",
+      Icon: Home,
+    },
+    {
       href: "/projects",
       label: "Projects",
       Icon: FolderGit2,
@@ -40,7 +47,7 @@ export default function Header() {
       Icon: Swords,
     },
     {
-      href: "/dashbord",
+      href: "/dashboard",
       label: "Dashbord",
       Icon: LayoutDashboard,
     },
@@ -138,7 +145,7 @@ export default function Header() {
                 <Link
                   href="/sign-in"
                   className="text-sm font-medium transition-colors flex gap-1 text-black bg-yellow-500  whitespace-nowrap ">
-                  Sign In
+                  Sign In <Github />
                 </Link>
               </Button>
             )}

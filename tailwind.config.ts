@@ -72,7 +72,10 @@ module.exports = {
       },
       boxShadow:{
         "10px-black":'5px 5px black',
-      }
+      },
+      screens: {
+        'sm': '900px',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
