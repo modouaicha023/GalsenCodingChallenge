@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Banknote, LogOut, Settings, UserCog } from "lucide-react";
-
+import defaultLogo from "../../../public/images/bro.svg"
 const ProfileButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src="/img/homme.png" />
+          <AvatarImage src={defaultLogo} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

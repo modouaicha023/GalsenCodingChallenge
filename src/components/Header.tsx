@@ -144,7 +144,7 @@ export default function Header() {
               <Button asChild variant="ghost">
                 <Link
                   href="/sign-in"
-                  className="text-sm font-medium transition-colors flex gap-1 text-black bg-yellow-500  whitespace-nowrap ">
+                  className="text-sm font-medium transition-colors flex gap-1 text-black bg-green-500  whitespace-nowrap ">
                   Sign In <Github />
                 </Link>
               </Button>

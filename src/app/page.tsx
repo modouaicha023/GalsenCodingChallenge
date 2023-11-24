@@ -5,7 +5,8 @@ import Link from "next/link";
 import { MoveRightIcon } from "lucide-react";
 import Image from "next/image";
 import devStuffImage from "../../public/images/Hire-JS-Dev.svg";
-export default function Home() {
+
+export default  function Home() {  
   return (
     <Container>
       <div className="flex w-full flex-col bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border  gap-6 p-6">
@@ -26,7 +27,11 @@ export default function Home() {
                 in the tech world.
               </p>
             </div>
-            <Image src={devStuffImage} alt="Developer" className="w-full md:w-1/2" />
+            <Image
+              src={devStuffImage}
+              alt="Developer"
+              className="w-full md:w-1/2"
+            />
           </div>
           <Button
             asChild
@@ -38,9 +43,7 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="w-full h-fit md:h-screen flex flex-col items-center justify-evenly gap-10 md:gap-6 p-8  bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 rounded-lg border-gray-100 border bg-gray-600 ">
-          
-        </div>
+        <div className="w-full h-fit md:h-screen flex flex-col items-center justify-evenly gap-10 md:gap-6 p-8  bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-20 rounded-lg border-gray-100 border bg-gray-600 "></div>
       </div>
     </Container>
   );

@@ -76,6 +76,9 @@ module.exports = {
       screens: {
         'sm': '900px',
       },
+      backgroundImage: {
+        'login': "url('../../public/images/bgImage.jpg')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
