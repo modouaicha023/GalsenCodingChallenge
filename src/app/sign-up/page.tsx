@@ -103,7 +103,7 @@ export default function SignUp() {
               with Galsen <span className="text-blue-400">Coding</span> Challenge
             </h1>
             <p className="font-medium text-1xl">
-              Join the coding community! Whether you're a beginner or an
+              Join the coding community! Whether you are a beginner or an
               experienced developer, Galsen Coding Challenge provides a platform
               to enhance your skills. Dive into coding challenges, collaborate
               with others, and level up your programming expertise.

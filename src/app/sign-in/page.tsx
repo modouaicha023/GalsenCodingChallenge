@@ -103,7 +103,7 @@ export default function SignIn() {
               Journey
             </h1>
             <p className="font-medium text-1xl">
-              Become part of the coding community! Whether you're just starting
+              Become part of the coding community! Whether you are just starting
               out or an seasoned developer, Galsen Coding Challenge offers a
               space to elevate your skills. Engage in coding challenges,
               collaborate with fellow enthusiasts, and boost your programming
