@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import { Account,User as AuthUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -6,7 +6,7 @@ import User from "@/models/User"
 import connect from "@/utils/db"
 import bcrypt from "bcryptjs"
 
-export const authOptions:any = {
+export const authOptions:AuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -29,7 +29,7 @@ export const authOptions:any = {
             } catch (error:any) {
                 throw new Error(error);
             }
-
+            return Promise.resolve(null);
         }
     }),
     GithubProvider({
