@@ -68,3 +68,6 @@
 .spin-button-none::-webkit-inner-spin-button {
   appearance: none;
 }
+.bg-282828 {
+  background-color: #282828;
+}

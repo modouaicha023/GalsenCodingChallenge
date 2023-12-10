@@ -36,13 +36,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
 
 const formSchema = z.object({
-  mail: z.string().email({
+  email: z.string().email({
     message: "Invalid email address",
   }),
   password: z.string().refine((password) => passwordRegex.test(password), {
@@ -59,7 +58,7 @@ export default function SignIn() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      mail: "",
+      email: "",
       password: "",
     },
   });
@@ -70,7 +69,7 @@ export default function SignIn() {
     }
   }, [session, router]);
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {    
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     setLoading(true);
     setError("");
     const res = await signIn("credentials", {
@@ -124,7 +123,7 @@ export default function SignIn() {
                   className="space-y-8 flex flex-col">
                   <FormField
                     control={form.control}
-                    name="mail"
+                    name="email"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex gap-2 items-center">
@@ -198,7 +197,7 @@ export default function SignIn() {
             <Separator className="m-2" />
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
               <Button variant={"outline"} className="w-full">
-                <Link href={"/"} className="flex items-center">
+                <div className="flex items-center">
                   <Image
                     src={googleLogo}
                     width={24}
@@ -207,13 +206,18 @@ export default function SignIn() {
                     className="mr-2"
                   />
                   <span className="text-sm">Continuer via Google</span>
-                </Link>
+                </div>
               </Button>
-              <Button variant={"outline"} className="w-full">
-                <Link href={"/"} className="flex items-center">
+              <Button
+                variant={"outline"}
+                className="w-full"
+                onClick={() => {
+                  signIn("github");
+                }}>
+                <div className="flex items-center">
                   <GithubIcon className="mr-2" />
                   <span className=""> Continuer via Github</span>
-                </Link>
+                </div>
               </Button>
             </div>
           </Card>

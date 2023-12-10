@@ -1,3 +1,4 @@
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,40 +9,49 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Banknote, LogOut, Settings, UserCog } from "lucide-react";
-import defaultLogo from "../../../public/images/bro.svg"
+import {  LayoutDashboard, LogOut, UserCog } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 const ProfileButton = () => {
+  const { data: session }: any = useSession();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src={defaultLogo} />
+          <AvatarImage src={session.user?.image} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel> {session.user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
-          Profile
-          <DropdownMenuShortcut>
-            <UserCog />
-          </DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
-          Portfolio
-          <DropdownMenuShortcut>
-            <Banknote />
-          </DropdownMenuShortcut>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <Link href="/profile">
+          <DropdownMenuItem className="cursor-pointer">
+            Profile
+            <DropdownMenuShortcut>
+              <UserCog />
+            </DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/dashboard">
+          <DropdownMenuItem className="cursor-pointer">
+            Dashboard
+            <DropdownMenuShortcut>
+              <LayoutDashboard />
+            </DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </Link>
+        {/* <DropdownMenuItem className="cursor-pointer">
           Settings
           <DropdownMenuShortcut>
             <Settings />
           </DropdownMenuShortcut>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer m-auto text-red-500">
+        <DropdownMenuItem
+          className="cursor-pointer m-auto text-red-500"
+          onClick={() => signOut()}>
           Log Out
           <DropdownMenuShortcut>
             <LogOut />

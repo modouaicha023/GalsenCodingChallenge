@@ -41,10 +41,10 @@ import { useRouter } from "next/navigation";
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
 
 const formSchema = z.object({
-  fullName: z.string().min(6, {
+  name: z.string().min(6, {
     message: "Your name should be at least 6 characters",
   }),
-  mail: z.string().email({
+  email: z.string().email({
     message: "Invalid email address",
   }),
   password: z.string().refine((password) => passwordRegex.test(password), {
@@ -61,8 +61,8 @@ export default function SignUp() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: "",
-      mail: "",
+      name: "",
+      email: "",
       password: "",
     },
   });
@@ -95,8 +95,8 @@ export default function SignUp() {
   }
   return (
     <Container>
-      <div className="flex w-full  h-screen">
-        <div className="w-1/2 h-screen bg-login hidden md:block bg-cover bg-center">
+      <div className="flex w-full  min-h-screen">
+        <div className="w-1/2  bg-login hidden md:block bg-cover bg-center">
           <div className="w-full h-full flex flex-col gap-8  justify-center p-4 bg-yellow-700 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border">
             <h1 className="font-bold text-4xl">
               Advance Your <span className="text-green-500">Skills</span>{" "}
@@ -123,7 +123,7 @@ export default function SignUp() {
                   className="space-y-8 flex flex-col">
                   <FormField
                     control={form.control}
-                    name="fullName"
+                    name="name"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex gap-2 items-center">
@@ -143,7 +143,7 @@ export default function SignUp() {
                   />
                   <FormField
                     control={form.control}
-                    name="mail"
+                    name="email"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="flex gap-2 items-center">

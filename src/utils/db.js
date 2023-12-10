@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 const connect = async () => {
-    if (mongoose.connections[0].readyState) return;
+    if (mongoose.connection.readyState === 1)
+        return mongoose.connection.asPromise();
     try {
 
         await mongoose.connect(process.env.MONGO_URL);
