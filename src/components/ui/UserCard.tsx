@@ -1,29 +1,19 @@
 "use client";
 import { Github, Linkedin, Twitter } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
-import { Button } from "./button";
 import Link from "next/link";
 import User from "@/models/User";
-import connect from "@/utils/db";
+interface User {
+  name: string;
+  email: string;
+  image: string;
+  githubUsername: string;
+  linkedinUsername: string;
+  twitterUsername: string;
+}
 
-const UserCard = async () => {
-  const { data: session }: any = useSession();
+const UserCard = (user: User) => {
   const { theme, setTheme } = useTheme();
-  // const getUserData = async () => {
-  //   await connect();
-  //   try {
-  //     const user = await User.findOne({ email: session.user?.email });
-  //     if (user) {
-  //       console.log(user);
-  //       return user;
-  //     }
-  //     return null;
-  //   } catch (error: any) {
-  //     console.log(error);
-  //     return null;
-  //   }
-  // };
 
   return (
     <div
@@ -34,37 +24,36 @@ const UserCard = async () => {
       } w-fit  p-4 rounded-md m-6 flex flex-col gap-8`}>
       <div className="flex gap-4">
         <img
-          src={session.user?.image}
-          alt={session.user?.name}
+          src={user?.image}
+          alt={user?.name}
           width={100}
           height={100}
           className=" h-20 w-20 rounded-full"
         />
         <div className="flex flex-col gap-1">
-          <h1 className="font-bold text-lg">{session.user?.name}</h1>
-          <h3>{session.user?.email}</h3>
+          <h1 className="font-bold text-lg">{user?.name}</h1>
+          <h3>{user?.email}</h3>
         </div>
       </div>
       <div className="flex flex-col gap-4">
         <div className=" flex gap-2">
           <Github />
-          <Link href={`https://github.com/${session.user?.githubUsername}`}>
-            <span>{`@${session.user?.githubUsername}`} </span>
+          <Link href={`https://github.com/${user?.githubUsername}`}>
+            <span>{`@${user?.githubUsername}`} </span>
           </Link>
         </div>
 
         <div className=" flex gap-2">
           <Linkedin />
-          <Link
-            href={`https://www.linkedin.com/in/${session.user?.linkedinUsername}`}>
-            <span>{`@${session.user?.linkedinUsername}`}</span>
+          <Link href={`https://www.linkedin.com/in/${user?.linkedinUsername}`}>
+            <span>{`@${user?.linkedinUsername}`}</span>
           </Link>
         </div>
 
         <div className="flex gap-2">
           <Twitter />
-          <Link href={`https://twitter.com/${session.user?.twitterUsername}`}>
-            <span>{`@${session.user?.twitterUsername}`}</span>
+          <Link href={`https://twitter.com/${user?.twitterUsername}`}>
+            <span>{`@${user?.twitterUsername}`}</span>
           </Link>
         </div>
       </div>

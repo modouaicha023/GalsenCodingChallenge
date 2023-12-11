@@ -65,7 +65,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/profile");
     }
   }, [session, router]);
 
