@@ -65,11 +65,31 @@ const authOptions: NextAuthOptions = {
           });
         }
 
+        //  else {
+        //         const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
+        //         const randomPassword = () => Array.from({ length: 12 }, () => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&+="[Math.floor(Math.random() * 69)]).join('');
+        //         const validRandomPassword = randomPassword();
+        //         const hashedPassword =  bcrypt.hashSync(validRandomPassword,10);
+        //         const newUser = await User.create({
+        //           email: profile?.email,
+        //           name: profile?.name || "name",
+        //           image: profile?.image,
+        //           password:hashedPassword,
+        //           twitterUsername:"",
+        //           githubUsername:"",
+        //           linkedinUsername:"",
+        //         });
+        //         return newUser;
+        // }
+
         return session;
       } catch (error: any) {
         console.error("Error in session callback:", error);
         return session;
       }
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
     },
   },
 };
