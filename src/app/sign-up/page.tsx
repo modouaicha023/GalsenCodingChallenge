@@ -37,7 +37,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
 
@@ -75,7 +75,6 @@ export default function SignUp() {
     }
   }, [session, router]);
 
-
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setLoading(true);
@@ -108,8 +107,8 @@ export default function SignUp() {
         <div className="w-1/2  bg-login hidden md:block bg-cover bg-center">
           <div className="w-full h-full flex flex-col gap-8  justify-center p-4 bg-yellow-700 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border">
             <h1 className="font-bold text-4xl">
-              Advance Your <span className="text-green-500">Skills</span>{" "}
-              with Galsen <span className="text-blue-400">Coding</span> Challenge
+              Advance Your <span className="text-green-500">Skills</span> with
+              Galsen <span className="text-blue-400">Coding</span> Challenge
             </h1>
             <p className="font-medium text-1xl">
               Join the coding community! Whether you are a beginner or an
@@ -225,7 +224,12 @@ export default function SignUp() {
 
             <Separator className="m-2" />
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
-              <Button variant={"outline"} className="w-full">
+              <Button
+                variant={"outline"}
+                className="w-full"
+                onClick={() => {
+                  signIn("github");
+                }}>
                 <Link href={"/"} className="flex items-center">
                   <GithubIcon className="mr-2" />
                   <span className=""> Continuer via Github</span>
