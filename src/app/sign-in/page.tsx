@@ -197,18 +197,6 @@ export default function SignIn() {
 
             <Separator className="m-2" />
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
-              <Button variant={"outline"} className="w-full">
-                <div className="flex items-center">
-                  <Image
-                    src={googleLogo}
-                    width={24}
-                    height={24}
-                    alt="Google Icon"
-                    className="mr-2"
-                  />
-                  <span className="text-sm">Continuer via Google</span>
-                </div>
-              </Button>
               <Button
                 variant={"outline"}
                 className="w-full"

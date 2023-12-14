@@ -227,18 +227,6 @@ export default function SignUp() {
             <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-2">
               <Button variant={"outline"} className="w-full">
                 <Link href={"/"} className="flex items-center">
-                  <Image
-                    src={googleLogo}
-                    width={24}
-                    height={24}
-                    alt="Google Icon"
-                    className="mr-2"
-                  />
-                  <span className="text-sm">Continuer via Google</span>
-                </Link>
-              </Button>
-              <Button variant={"outline"} className="w-full">
-                <Link href={"/"} className="flex items-center">
                   <GithubIcon className="mr-2" />
                   <span className=""> Continuer via Github</span>
                 </Link>
