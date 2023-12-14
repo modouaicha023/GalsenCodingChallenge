@@ -3,8 +3,6 @@ import { redirect } from "next/navigation";
 import Container from "@/components/ui/container";
 import UserCard from "@/components/ui/UserCard";
 import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { use } from "react";
 
 
 interface User {

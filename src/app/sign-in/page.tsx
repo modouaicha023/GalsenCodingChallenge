@@ -62,12 +62,15 @@ export default function SignIn() {
       password: "",
     },
   });
-
-  useEffect(() => {
-    if (session?.status === "authenticated") {
-      router.replace("/profile");
-    }
-  }, [session, router]);
+  
+  if (session?.status === "authenticated") {
+    router.replace("/profile");
+  }
+  // useEffect(() => {
+  //   if (session?.status === "authenticated") {
+  //     router.replace("/profile");
+  //   }
+  // }, [session, router]);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     setLoading(true);
