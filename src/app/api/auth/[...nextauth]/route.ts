@@ -44,10 +44,8 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async session({
       session,
-      user,
     }: {
       session: any;
-      user: any;
     }): Promise<Session> {
       try {
         await connect();
@@ -92,6 +90,7 @@ const authOptions: NextAuthOptions = {
       return baseUrl;
     },
   },
+  secret : process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
