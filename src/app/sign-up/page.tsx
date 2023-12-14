@@ -97,7 +97,7 @@ export default function SignUp() {
       }
     } catch (error) {
       setError("Error ,try again");
-      console.log(error);
+      console.error(error);
       setLoading(false);
     }
   }

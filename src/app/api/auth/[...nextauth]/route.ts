@@ -75,10 +75,8 @@ const authOptions: NextAuthOptions = {
         const existingUser = await User.findOne({ email: profile?.email });
 
         if (existingUser) {
-          console.log("User already exists");
           return true;
         } else {
-          console.log("Creating new user");
           const generatedPassword = Math.random().toString(36).slice(-8);
           const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
 
