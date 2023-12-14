@@ -71,7 +71,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.replace("/profile");
+      router.replace("/");
     }
   }, [session, router]);
 
@@ -103,8 +103,8 @@ export default function SignUp() {
   }
   return (
     <Container>
-      <div className="flex w-full  min-h-screen">
-        <div className="w-1/2  bg-login hidden md:block bg-cover bg-center">
+      <div className="flex w-full  h-screen">
+        <div className="w-1/2 h-screen  bg-login hidden md:block bg-cover bg-center">
           <div className="w-full h-full flex flex-col gap-8  justify-center p-4 bg-yellow-700 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border">
             <h1 className="font-bold text-4xl">
               Advance Your <span className="text-green-500">Skills</span> with
@@ -230,10 +230,10 @@ export default function SignUp() {
                 onClick={() => {
                   signIn("github");
                 }}>
-                <Link href={"/"} className="flex items-center">
+                <div  className="flex items-center">
                   <GithubIcon className="mr-2" />
-                  <span className=""> Continuer via Github</span>
-                </Link>
+                  <span className=""> Register via Github</span>
+                </div>
               </Button>
             </div>
           </Card>

@@ -66,7 +66,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.replace("/profile");
+      router.replace("/");
     }
   }, [session, router]);
 
@@ -84,7 +84,7 @@ export default function SignIn() {
 
       if (res?.url) {
         setLoading(false);
-        router.replace("/dashboard");
+        router.replace("/");
       }
     } else {
       setError("");
@@ -205,7 +205,7 @@ export default function SignIn() {
                 }}>
                 <div className="flex items-center">
                   <GithubIcon className="mr-2" />
-                  <span className=""> Continuer via Github</span>
+                  <span className=""> Sign In via Github</span>
                 </div>
               </Button>
             </div>
