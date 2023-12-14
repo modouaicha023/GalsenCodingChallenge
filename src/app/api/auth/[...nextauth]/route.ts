@@ -42,11 +42,7 @@ const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async session({
-      session,
-    }: {
-      session: any;
-    }): Promise<Session> {
+    async session({ session }: { session: any }): Promise<Session> {
       try {
         await connect();
         const userData = await User.findOne({ email: session.user.email });
@@ -63,23 +59,6 @@ const authOptions: NextAuthOptions = {
           });
         }
 
-        //  else {
-        //         const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
-        //         const randomPassword = () => Array.from({ length: 12 }, () => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&+="[Math.floor(Math.random() * 69)]).join('');
-        //         const validRandomPassword = randomPassword();
-        //         const hashedPassword =  bcrypt.hashSync(validRandomPassword,10);
-        //         const newUser = await User.create({
-        //           email: profile?.email,
-        //           name: profile?.name || "name",
-        //           image: profile?.image,
-        //           password:hashedPassword,
-        //           twitterUsername:"",
-        //           githubUsername:"",
-        //           linkedinUsername:"",
-        //         });
-        //         return newUser;
-        // }
-
         return session;
       } catch (error: any) {
         console.error("Error in session callback:", error);
@@ -89,8 +68,49 @@ const authOptions: NextAuthOptions = {
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
+
+    async signIn({ user, account, profile, email, credentials }) {
+      if (account?.provider === "github") {
+        await connect();
+        const existingUser = await User.findOne({ email: profile?.email });
+
+        if (existingUser) {
+          console.log("User already exists");
+          return true;
+        } else {
+          console.log("Creating new user");
+          const generatedPassword = Math.random().toString(36).slice(-8);
+          const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
+
+          const newUser = new User({
+            name: (profile as any)?.name,
+            email: (profile as any)?.email,
+            password: hashedPassword,
+            image: (profile as any)?.avatar_url,
+            twitterUsername: (profile as any)?.twitter_username,
+            githubUsername: (profile as any)?.login,
+            linkedinUsername: "",
+          });
+          await newUser.save();
+
+          Object.assign(user, {
+            id: newUser._doc._id,
+            name: newUser._doc.name,
+            email: newUser._doc.email,
+            image: newUser._doc.image,
+            twitterUsername: newUser._doc.twitterUsername,
+            githubUsername: newUser._doc.githubUsername,
+            linkedinUsername: newUser._doc.linkedinUsername,
+          });
+
+          return true;
+        }
+      }
+
+      return true;
+    },
   },
-  secret : process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);

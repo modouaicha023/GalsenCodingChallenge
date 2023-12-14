@@ -7,8 +7,6 @@ import {
   Moon,
   Sun,
   Menu,
-  Bell,
-  FolderGit2,
   Swords,
   LayoutDashboard,
   Home,
@@ -37,11 +35,6 @@ export default function Header() {
       label: "Home",
       Icon: Home,
     },
-    // {
-    //   href: "/projects",
-    //   label: "Projects",
-    //   Icon: FolderGit2,
-    // },
     {
       href: "/challenges",
       label: "Challenges",
@@ -135,7 +128,7 @@ export default function Header() {
               <Button asChild variant="ghost">
                 <Link
                   href="/sign-in"
-                  className="text-sm font-medium transition-colors flex gap-1 text-black bg-green-500  whitespace-nowrap ">
+                  className="text-sm font-extrabold transition-colors flex gap-1 text-black bg-green-500  whitespace-nowrap ">
                   Sign In <Github />
                 </Link>
               </Button>
