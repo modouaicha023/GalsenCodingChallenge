@@ -1,6 +1,6 @@
 "use client";
 import Container from "@/components/ui/container";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LogIn,
   Lock,
@@ -37,6 +37,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}$/;
 
@@ -57,6 +58,7 @@ export default function SignUp() {
   const [viewPassword, setViewPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const session = useSession();
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,6 +68,13 @@ export default function SignUp() {
       password: "",
     },
   });
+
+  useEffect(() => {
+    if (session?.status === "authenticated") {
+      router.replace("/profile");
+    }
+  }, [session, router]);
+
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
