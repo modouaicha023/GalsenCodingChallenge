@@ -29,7 +29,7 @@ const authOptions: NextAuthOptions = {
           }
           return null;
         } catch (error: any) {
-          console.log(error);
+          console.error(error);
           return null;
         }
       },
@@ -49,15 +49,11 @@ const authOptions: NextAuthOptions = {
       session: any;
       user: any;
     }): Promise<Session> {
-      console.log("Session callback is being executed.");
-      console.log(session);
-
       try {
         await connect();
         const userData = await User.findOne({ email: session.user.email });
 
         if (userData) {
-          console.log(userData);
           Object.assign(session.user, {
             id: userData._doc._id,
             name: userData._doc.name,
@@ -67,11 +63,10 @@ const authOptions: NextAuthOptions = {
             githubUsername: userData._doc.githubUsername,
             linkedinUsername: userData._doc.linkedinUsername,
           });
-          console.log(session.user);
         }
 
         return session;
-      } catch (error) {
+      } catch (error: any) {
         console.error("Error in session callback:", error);
         return session;
       }
