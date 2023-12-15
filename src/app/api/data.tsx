@@ -6,7 +6,14 @@ export const challenges = [
       "https://blog.datawrapper.de/wp-content/uploads/2021/06/game-of-life-loop-cropped.gif",
     description: "Implement the Game of Life by John Conway",
     author: "Elias Waly Ba",
-    features: ["Implement the Game"],
+    features: [
+      "Implement the Game rule",
+      "Add Start/Stop Button",
+      "Add Reset Button",
+      "Add Speed Control Button",
+      "Add Grid Size Control Button",
+      "Add Randomize Button",
+    ],
     guidelines: [
       "Submit the source code on Github with an explanatory README.",
       "Place the repository link in a comment under the tweet.",
@@ -150,5 +157,52 @@ export const challenges = [
       "Track users' progress and provide feedback for improvement.",
     ],
     date: "14/11/2023",
+  },
+];
+export const challengers = [
+  {
+    id: "1",
+    name: "Challenger 1",
+    image:'https://cdn-icons-png.flaticon.com/512/6840/6840478.png',
+  },
+  {
+    id: "2",
+    name: "Challenger 2",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "3",
+    name: "Challenger 3",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "4",
+    name: "Challenger 4",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "5",
+    name: "Challenger 5",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "6",
+    name: "Challenger 6",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "7",
+    name: "Challenger 7",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "8",
+    name: "Challenger 8",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  },
+  {
+    id: "9",
+    name: "Challenger 9",
+    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
   },
 ];

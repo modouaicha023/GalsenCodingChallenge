@@ -35,7 +35,7 @@ const ChallengeItem = (challenge: Challenge) => {
       <Link
         href={`/challenges/${challenge.id}`}
         className="w-full hover:opacity-80">
-        <Button className="w-full">Participate</Button>
+        <Button className="w-full">See details</Button>
       </Link>
     </div>
   );
