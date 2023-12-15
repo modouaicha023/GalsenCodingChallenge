@@ -7,7 +7,7 @@ function Challenges() {
     <Container>
       <div className="flex flex-wrap ">
         {allChalleges.map((challenge) => (
-          <ChallengeItem {...(challenge as Challenge)} />
+          <ChallengeItem key={challenge.id} {...(challenge as Challenge)} />
         ))}
       </div>
     </Container>
