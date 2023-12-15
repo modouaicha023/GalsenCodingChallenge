@@ -4,7 +4,6 @@ import Container from "@/components/ui/container";
 import UserCard from "@/components/ui/UserCard";
 import { useSession } from "next-auth/react";
 
-
 interface User {
   name: string;
   email: string;
@@ -14,15 +13,15 @@ interface User {
   twitterUsername: string;
 }
 
-export default  function Profile() {
+export default function Profile() {
   const { data: session }: any = useSession();
   if (!session) {
     redirect("/sign-in");
   }
   return (
     <Container>
-      <div>
-      <UserCard {...session.user as User} />
+      <div className="flex justify-center md:justify-start">
+        <UserCard {...(session.user as User)} />
       </div>
     </Container>
   );
