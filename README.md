@@ -69,7 +69,7 @@ Make sure you have the following installed on your machine:
 
 ## Tech Stack
 
-- **Frontend:** Next.js, TypeScript, Tailwind CSS
+- **Frontend:** Next.js, TypeScript, Tailwind CSS, Shadcn UI
 - **Backend:** Node.js,  MongoDB
 - **Authentication:** NextAUth
 
