@@ -1,17 +1,10 @@
 "use client";
 import { redirect } from "next/navigation";
 import Container from "@/components/ui/container";
-import UserCard from "@/components/ui/UserCard";
+import UserCard from "@/components/UserCard";
 import { useSession } from "next-auth/react";
+import { User } from "@/lib/types";
 
-interface User {
-  name: string;
-  email: string;
-  image: string;
-  githubUsername: string;
-  linkedinUsername: string;
-  twitterUsername: string;
-}
 
 export default function Profile() {
   const { data: session }: any = useSession();

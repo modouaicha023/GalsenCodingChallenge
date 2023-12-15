@@ -2,15 +2,7 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import User from "@/models/User";
-interface User {
-  name: string;
-  email: string;
-  image: string;
-  githubUsername: string;
-  linkedinUsername: string;
-  twitterUsername: string;
-}
+import { User } from "@/lib/types";
 
 const UserCard = (user: User) => {
   const { theme, setTheme } = useTheme();
