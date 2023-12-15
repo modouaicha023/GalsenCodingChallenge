@@ -75,6 +75,7 @@ module.exports = {
       },
       screens: {
         'sm': '900px',
+        "mobile":"400px",
       },
       backgroundImage: {
         'login': "url('../../public/images/bgImage.jpg')",

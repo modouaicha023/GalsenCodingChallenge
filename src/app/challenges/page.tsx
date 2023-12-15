@@ -1,9 +1,17 @@
-import React from 'react'
-
+import ChallengeItem from "@/components/ChallengeItem";
+import Container from "@/components/ui/container";
+import { Challenge } from "@/lib/types";
+import { challenges as allChalleges } from "../api/data";
 function Challenges() {
   return (
-    <div>Challenges</div>
-  )
+    <Container>
+      <div className="flex flex-wrap ">
+        {allChalleges.map((challenge) => (
+          <ChallengeItem {...(challenge as Challenge)} />
+        ))}
+      </div>
+    </Container>
+  );
 }
 
-export default Challenges
+export default Challenges;
