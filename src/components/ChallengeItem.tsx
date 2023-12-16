@@ -9,10 +9,10 @@ const ChallengeItem = (challenge: Challenge) => {
 
   return (
     <div
-      className={`bg-${
+      className={`${
         theme === "light"
-          ? "white shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
-          : "282828"
+          ? "shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
+          : "border-gray-100 border"
       } mobile:w-full  max-w-[250px] max-h-400px sm:w-[300px]  p-4 rounded-md m-6 flex flex-col gap-4 items-center  justify-center flex-shrink-0 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-4`}>
       <Link
         href={`/challenges/${challenge.id}`}

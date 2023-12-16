@@ -118,7 +118,7 @@ export default function SignUp() {
             </p>
           </div>
         </div>
-        <div className="w-full h-full md:w-1/2 lg:w-1/2 px-7 py-4 flex items-center justify-center">
+        <div className="w-full h-screen md:w-1/2 lg:w-1/2 px-7 py-4 flex items-center justify-center">
           <Card className=" w-full min-w-[230px] h-fit p-6 ">
             <CardHeader>
               <CardTitle>Register</CardTitle>
@@ -230,7 +230,7 @@ export default function SignUp() {
                 onClick={() => {
                   signIn("github");
                 }}>
-                <div  className="flex items-center">
+                <div className="flex items-center">
                   <GithubIcon className="mr-2" />
                   <span className=""> Register via Github</span>
                 </div>
