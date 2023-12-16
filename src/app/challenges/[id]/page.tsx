@@ -42,14 +42,14 @@ const ChallengeDetailPage = ({ params }: { params: Challenge }) => {
             theme={theme as string}
           />
         </div>
-        <div
+        {/* <div
           className={`w-full min-h-screen gap-4 md:gap-6  bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-90 rounded-lg ${
             theme === "light"
               ? "shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
               : "border-gray-100"
           }  border bg-black-700 `}>
           <div className=""></div>
-        </div>
+        </div> */}
       </div>
     </Container>
   );
