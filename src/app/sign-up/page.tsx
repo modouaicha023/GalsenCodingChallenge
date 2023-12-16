@@ -103,7 +103,7 @@ export default function SignUp() {
   }
   return (
     <Container>
-      <div className="flex w-full  h-screen">
+      <div className="flex w-full  min-h-screen">
         <div className="w-1/2 h-screen  bg-login hidden md:block bg-cover bg-center">
           <div className="w-full h-full flex flex-col gap-8  justify-center p-4 bg-yellow-700 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border">
             <h1 className="font-bold text-4xl">
