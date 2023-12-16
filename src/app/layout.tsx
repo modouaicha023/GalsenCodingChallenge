@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import AuthProvider from "@/utils/SessionProvider";
+import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default async function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
         </AuthProvider>
       </body>
