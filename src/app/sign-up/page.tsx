@@ -71,7 +71,7 @@ export default function SignUp() {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.replace("/");
+      router.replace("/profile");
     }
   }, [session, router]);
 
