@@ -2,6 +2,13 @@
 
 Welcome to the Galsen Coding Challenge project! We appreciate your interest in contributing. Before you start, please take a moment to read our contribution guidelines.
 
+
+
+## Project Boards
+
+We manage our project and features using GitHub Project Boards. Check out the current project board [here↗️](https://github.com/users/modouaicha023/projects/5).
+
+
 ## Getting Started
 
 1. Fork the repository to your GitHub account.
