@@ -13,7 +13,7 @@ const UserCard = (user: User) => {
         theme === "light"
           ? "white shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
           : "282828"
-      } w-[300px]  p-4 rounded-md m-6 flex flex-col gap-8 md:w-fit md:justify-center `}>
+      } w-[300px] h-fit  p-4 rounded-md m-6 flex flex-col gap-8 md:w-fit md:justify-center `}>
       <div className="flex gap-4 flex-col items-center md:flex-row ">
         <img
           src={user?.image}

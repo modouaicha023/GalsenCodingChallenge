@@ -13,7 +13,7 @@ export default function Profile() {
   }
   return (
     <Container>
-      <div className="flex justify-center md:justify-start">
+      <div className="flex  md:justify-start min-h-screen">
         <UserCard {...(session.user as User)} />
       </div>
     </Container>
