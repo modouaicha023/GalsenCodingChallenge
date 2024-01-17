@@ -17,3 +17,10 @@ export interface Challenge {
   guidelines: [];
   date: string;
 }
+
+export interface ChallengeSubmission {
+  challengerId: String;
+  challengeId: String;
+  githubRepoSolutione: String;
+  previewSolution: String;
+}
