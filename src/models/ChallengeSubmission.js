@@ -5,12 +5,10 @@ const ChallengeSubmissionSchema = new mongoose.Schema(
         challengerId: {
             type: String,
             required: true,
-            unique: true,
         },
         challengeId: {
             type: String,
             required: true,
-            unique: true,
         },
         githubRepoSolution: {
             type: String,
