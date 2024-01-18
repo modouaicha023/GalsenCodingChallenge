@@ -6,7 +6,13 @@ import { Button } from "./ui/button";
 import { useEffect } from "react";
 import { challengers } from "@/app/api/data";
 
-const ChallengeDetail =({ challenge, theme }: { challenge: Challenge; theme: string })  => {
+const ChallengeDetail = ({
+  challenge,
+  theme,
+}: {
+  challenge: Challenge;
+  theme: string;
+}) => {
   return (
     <div
       className={`bg-${
@@ -29,26 +35,32 @@ const ChallengeDetail =({ challenge, theme }: { challenge: Challenge; theme: str
             <div className="text-sm opacity-70">{challenge.date}</div>
           </div>
           <div className="flex gap-4 breakpoint:flex-col font-extrabold text-lg">
-            <Button className="w-full text-black hover:opacity-80">
+            {/* <Button className="w-full text-black hover:opacity-80">
               Participate
-            </Button>
+            </Button> */}
             <Button className="w-full hover:opacity-80 text-black bg-green-600 hover:bg-green-600">
               Sumbit Solution
             </Button>
           </div>
           <div className="text-lg flex flex-col  gap-2 font-medium border border-gray-300 rounded-sm p-2 w-full ">
-            <span className="opacity-70 text-center">Challengers</span>
+            <span className="opacity-70 text-center">Submissions</span>
             <div className="flex gap-2 flex-wrap items-center justify-center">
-              {challengers.map((challenger, index) => (
-                <div key={index} className="flex gap- items-center w-fit">
-                  <img
-                    src={challenger.image}
-                    alt={challenger.name}
-                    className="object-cover h-5 w-5 rounded-full"
-                  />
-                  <div className="text-sm">{challenger.name}</div>
-                </div>
-              ))}
+              { challengers && challengers.length > 0 ? (
+                challengers.map((challenger, index) => (
+                  <div key={index} className="flex gap- items-center w-fit">
+                    <img
+                      src={(challenger as { image: string })?.image}
+                      alt={(challenger as { name?: string })?.name}
+                      className="object-cover h-5 w-5 rounded-full"
+                    />
+                    <div className="text-sm">
+                      {(challenger as { name: string })?.name}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div>No Submissions</div>
+              )}
             </div>
           </div>
         </div>

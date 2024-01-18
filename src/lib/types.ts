@@ -19,8 +19,14 @@ export interface Challenge {
 }
 
 export interface ChallengeSubmission {
-  challengerId: String;
-  challengeId: String;
-  githubRepoSolutione: String;
-  previewSolution: String;
+  challengerId: string;
+  challengeId: string;
+  githubRepoSolution: string;
+  previewSolution: string;
+}
+
+export interface ChallengeUserData {
+  challengerId: string;
+  challengeId: string;
+
 }

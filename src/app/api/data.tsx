@@ -160,49 +160,49 @@ export const challenges = [
   },
 ];
 export const challengers = [
-  {
-    id: "1",
-    name: "Challenger 1",
-    image:'https://cdn-icons-png.flaticon.com/512/6840/6840478.png',
-  },
-  {
-    id: "2",
-    name: "Challenger 2",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "3",
-    name: "Challenger 3",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "4",
-    name: "Challenger 4",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "5",
-    name: "Challenger 5",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "6",
-    name: "Challenger 6",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "7",
-    name: "Challenger 7",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "8",
-    name: "Challenger 8",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
-  {
-    id: "9",
-    name: "Challenger 9",
-    image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
-  },
+  // {
+  //   id: "1",
+  //   name: "Challenger 1",
+  //   image:'https://cdn-icons-png.flaticon.com/512/6840/6840478.png',
+  // },
+  // {
+  //   id: "2",
+  //   name: "Challenger 2",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "3",
+  //   name: "Challenger 3",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "4",
+  //   name: "Challenger 4",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "5",
+  //   name: "Challenger 5",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "6",
+  //   name: "Challenger 6",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Challenger 7",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "8",
+  //   name: "Challenger 8",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
+  // {
+  //   id: "9",
+  //   name: "Challenger 9",
+  //   image: "https://cdn-icons-png.flaticon.com/512/6840/6840478.png",
+  // },
 ];
