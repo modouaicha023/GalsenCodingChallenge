@@ -29,7 +29,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { ChallengeUserData } from "@/lib/types";
+// import { ChallengeUserData } from "@/lib/types";
 
 const formSchema = z.object({
   challengerId: z.string(),
@@ -38,6 +38,23 @@ const formSchema = z.object({
   previewSolution: z.string().url(),
 });
 const ChallengeDetailPage = ({ params }: { params: Challenge }) => {
+  const { theme } = useTheme();
+  const [data, setData] = useState({ challengerId: "", challengeId: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isSumbitBtnClicked, setIsSumbitBtnClicked] = useState(false);
+  // const router = useRouter();
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      challengerId: data.challengerId,
+      challengeId: data.challengeId,
+      githubRepoSolution: "",
+      previewSolution: "",
+    },
+  });
+
   const challenge = AllChallenges.find(
     (challengeItem) => challengeItem.id === params.id
   );
@@ -56,23 +73,6 @@ const ChallengeDetailPage = ({ params }: { params: Challenge }) => {
         />
       </div>
     );
-
-  const { theme } = useTheme();
-  const [data, setData] = useState({ challengerId: "", challengeId: "" });
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isSumbitBtnClicked, setIsSumbitBtnClicked] = useState(false);
-  const router = useRouter();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      challengerId: data.challengerId,
-      challengeId: data.challengeId,
-      githubRepoSolution: "",
-      previewSolution: "",
-    },
-  });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     // try {
