@@ -3,8 +3,29 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Challenge } from "@/lib/types";
 import { Button } from "./ui/button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { challengers } from "@/app/api/data";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
+import { z } from "zod";
+import { Link as LinkIcon, Github } from "lucide-react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const ChallengeDetail = ({
   challenge,
@@ -13,6 +34,51 @@ const ChallengeDetail = ({
   challenge: Challenge;
   theme: string;
 }) => {
+  const [data, setData] = useState({ challengerId: "", challengeId: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isSumbitBtnClicked, setIsSumbitBtnClicked] = useState(false);
+
+  const formSchema = z.object({
+    challengerId: z.string(),
+    challengeId: z.string(),
+    githubRepoSolution: z.string().url(),
+    previewSolution: z.string().url(),
+  });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      challengerId: data.challengerId,
+      challengeId: data.challengeId,
+      githubRepoSolution: "",
+      previewSolution: "",
+    },
+  });
+
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    // try {
+    //   setLoading(true);
+    //   const res = await fetch("/api/sign-up", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   });
+    //   if (res.status == 400) {
+    //     setError("This email already exist");
+    //     setLoading(false);
+    //   }
+    //   if (res.status == 200) {
+    //     setError("");
+    //     setLoading(false);
+    //   }
+    // } catch (error) {
+    //   setError("Error ,try again");
+    //   console.error(error);
+    //   setLoading(false);
+    // }
+  }
   return (
     <div
       className={`bg-${
@@ -38,14 +104,16 @@ const ChallengeDetail = ({
             {/* <Button className="w-full text-black hover:opacity-80">
               Participate
             </Button> */}
-            <Button className="w-full hover:opacity-80 text-black bg-green-600 hover:bg-green-600">
+            <Button
+              className="w-full hover:opacity-80 text-black bg-green-600 hover:bg-green-600"
+              onClick={() => setIsSumbitBtnClicked(!isSumbitBtnClicked)}>
               Sumbit Solution
             </Button>
           </div>
           <div className="text-lg flex flex-col  gap-2 font-medium border border-gray-300 rounded-sm p-2 w-full ">
             <span className="opacity-70 text-center">Submissions</span>
             <div className="flex gap-2 flex-wrap items-center justify-center">
-              { challengers && challengers.length > 0 ? (
+              {challengers && challengers.length > 0 ? (
                 challengers.map((challenger, index) => (
                   <div key={index} className="flex gap- items-center w-fit">
                     <img
@@ -94,6 +162,77 @@ const ChallengeDetail = ({
           </div>
         </div>
       </div>
+      {/* Submission Form */}
+      {isSumbitBtnClicked && (
+        <div className="flex w-full items-center justify-center ">
+          <div className="w-full max-w-none md:max-w-[600px]  px-7 py-4 flex items-center justify-center">
+            <Card className=" w-full min-w-[230px] h-fit p-6 ">
+              <CardHeader>
+                <CardTitle>Submission Form</CardTitle>
+                <CardDescription>
+                  Sumbit your solution to this challenge.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-8 flex flex-col">
+                    <FormField
+                      control={form.control}
+                      name="githubRepoSolution"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="flex gap-2 items-center">
+                            <Github />
+                            Github Repository Solution
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="text"
+                              placeholder="Fill with your github repository URL"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="previewSolution"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="flex gap-2 items-center">
+                            <LinkIcon />
+                            Live Solution
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="text"
+                              placeholder="Fill with the Live Solution URL"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit" size="lg" disabled={loading}>
+                      Submit my solution
+                    </Button>
+                  </form>
+                </Form>
+                {error !== "" && (
+                  <CardDescription className="pt-3 text-red-500">
+                    {error}
+                  </CardDescription>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
